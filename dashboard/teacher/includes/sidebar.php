@@ -19,7 +19,9 @@
                     <a href="./courses.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'courses.php' || basename($_SERVER['PHP_SELF']) ==  'add_course.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Courses</a>
                     <a href="./attendence.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'attendence.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Attendence</a>
                     <a href="./assignments.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'assignments.php' || basename($_SERVER['PHP_SELF']) ==  'add_assignment.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Assignments</a>
+                    <a href="./assignment_solutions.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'assignment_solutions.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Assign. Solutions</a>
                     <a href="./quizes.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'quizes.php' || basename($_SERVER['PHP_SELF']) ==  'add_quiz.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Quizes</a>
+                    <a href="./quiz_solutions.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'quiz_solutions.php' ? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Quiz Solutions</a>
                     <a href="./messages.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'messages.php' ? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Messages</a>
                     <a href="./live_chat.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'live_chat.php' ? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Live Chat</a>
                 </div>

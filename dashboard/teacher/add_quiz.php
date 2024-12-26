@@ -8,44 +8,63 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $title = $_POST['title'];
         $question = $_POST['question'];
-        $options = implode(',', [$_POST['option1'], $_POST['option2'], $_POST['option3'], $_POST['option4']]);
+        $status = $_POST['status'];
+        $deadline = $_POST['deadline'];
+        $options = implode(',', $_POST['options']); // Assuming options are stored as comma-separated values
+        $course_id = $_POST['course_id'];
         $teacher_id = $_SESSION['id'];
 
-        $sql = $conn->prepare("INSERT INTO `quizes` (`title`, `question`, `options`, `teacher_id`) VALUES (?, ?, ?, ?)");
-        $sql->bind_param("sssi", $title, $question, $options, $teacher_id);
+        $sql = $conn->prepare("INSERT INTO `quizes` (`title`, `question`, `status`, `deadline`, `options`, `course_id`, `teacher_id`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $sql->bind_param("ssssssi", $title, $question, $status, $deadline, $options, $course_id, $teacher_id);
         if ($sql->execute()) {
             echo "<div class='alert alert-success'>The quiz has been added successfully.</div>";
         } else {
             echo "<div class='alert alert-danger'>Error: " . $sql->error . "</div>";
         }
     }
+
+    $teacher_id = $_SESSION['id'];
+    $courses_sql = $conn->query("SELECT * FROM `courses` WHERE FIND_IN_SET('$teacher_id', `teacher_id`)");
     ?>
-    <form action="" method="POST">
-        <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="title">Quiz Title</label>
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
-        <div class="mb-3">
-            <label for="question" class="form-label">Question</label>
-            <textarea class="form-control" id="question" name="question" rows="3" required></textarea>
+        <div class="form-group">
+            <label for="question">Quiz Question</label>
+            <textarea class="form-control" id="question" name="question" required></textarea>
         </div>
-        <div class="mb-3">
-            <label for="option1" class="form-label">Option 1</label>
-            <input type="text" class="form-control" id="option1" name="option1" required>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" id="status" name="status" required>
+                <option value="pending">Pending</option>
+                <option value="active">Active</option>
+                <option value="blocked">Blocked</option>
+                <option value="completed">Completed</option>
+            </select>
         </div>
-        <div class="mb-3">
-            <label for="option2" class="form-label">Option 2</label>
-            <input type="text" class="form-control" id="option2" name="option2" required>
+        <div class="form-group">
+            <label for="deadline">Deadline</label>
+            <input type="datetime-local" class="form-control" id="deadline" name="deadline" required>
         </div>
-        <div class="mb-3">
-            <label for="option3" class="form-label">Option 3</label>
-            <input type="text" class="form-control" id="option3" name="option3" required>
+        <div class="form-group">
+            <label for="course_id">Course</label>
+            <select class="form-control" id="course_id" name="course_id" required>
+                <?php while ($course = $courses_sql->fetch_assoc()): ?>
+                    <option value="<?php echo $course['id']; ?>"><?php echo htmlspecialchars($course['title']); ?></option>
+                <?php endwhile; ?>
+            </select>
         </div>
-        <div class="mb-3">
-            <label for="option4" class="form-label">Option 4</label>
-            <input type="text" class="form-control" id="option4" name="option4" required>
+        <div class="form-group">
+            <label for="options">Options</label>
+            <input type="text" class="form-control mb-2" name="options[]" required>
+            <input type="text" class="form-control mb-2" name="options[]" required>
+            <input type="text" class="form-control mb-2" name="options[]" required>
+            <input type="text" class="form-control mb-2" name="options[]" required>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Add Quiz</button>
     </form>
 </div>
 

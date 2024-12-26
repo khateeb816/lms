@@ -32,6 +32,7 @@ while ($row = $sql->fetch_assoc()) {
                 <th>Assign to</th>
                 <th>Status</th>
                 <th>Button</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -68,7 +69,7 @@ while ($row = $sql->fetch_assoc()) {
                         </td>
                         <input type='hidden' name='courseid' value='$id'>
                         <td>
-                            <select name='status' id='status_$id' class='form-control' onchange='changeStatus($id, this.value)'>
+                            <select name='status' id='status_$id' class='form-control form-select' onchange='changeStatus($id, this.value)'>
                                 <option value='pending'" . ($status == 'pending' ? " selected" : "") . ">Pending</option>
                                 <option value='active'" . ($status == 'active' ? " selected" : "") . ">Active</option>
                                 <option value='block'" . ($status == 'block' ? " selected" : "") . ">Block</option>
@@ -76,8 +77,12 @@ while ($row = $sql->fetch_assoc()) {
                         </td>
                         <td><button type = 'submit' class = 'btn btn-primary'>Change</td>
 
-                    </tr>
-                        </form>";
+                    
+                    <td>
+        <a href = './delete_course.php?id=$id' class='btn btn-danger'>Delete</a>
+        <a href = './update_course.php?id=$id' class='btn btn-primary'>Edit</a>
+        </td>
+                        </tr></form>";
                 $sNo++;
             }
             ?>

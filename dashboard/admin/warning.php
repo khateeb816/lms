@@ -13,11 +13,12 @@ if (isset($_GET['user'])) {
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $title = $_POST['title'];
     $description = $_POST['description'];
+    $to = $_POST['user'];
     $users = $_POST['users'];
     $sql = $conn->query("INSERT INTO `alerts`(`title`, `message`, `user_id`) VALUES ('$title', '$description', '$users')");
     if($sql){
 
-        echo('<script>window.location.href='.$_SERVER['HTTP_REFERER'].'?msg=Message sent successfully</script>');
+        echo('<script>window.location.href='.$_SERVER['PHP_SELF'].'?user=' .$to .'&msg=Message sent successfully</script>');
     }
 }
 
@@ -39,9 +40,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </div>
         <div class="modal-body">
             <div class="login">
-                <form action="#" class="row" method="post">
+                <form action="" class="row" method="post">
                     <div class="col-12">
                         <input type="text" class="form-control mb-3" id="signupPhone" name="title" placeholder="Title" required>
+                        <input type="hidden" class="form-control mb-3" id="signupPhone" name="user" value="<?php echo $_GET['user']?>" placeholder="Title" required>
                     </div>
                     <div class="col-12">
                         <textarea name="description" class="form-control mb-3" id="description" placeholder="Enter Description"></textarea>

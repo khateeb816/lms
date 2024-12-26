@@ -21,6 +21,7 @@ while ($row = $sql->fetch_assoc()) {
                 <th>Semester</th>
                 <th>Joined</th>
                 <th>Status</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,11 +36,15 @@ foreach ($students as $student) {
         <td>" . htmlspecialchars($student['semester_id'], ENT_QUOTES, 'UTF-8') . "</td>
         <td>" . htmlspecialchars($student['created_at'], ENT_QUOTES, 'UTF-8') . "</td>
         <td>
-            <select name='status' id='status_$studentId' class='form-control' onchange='changeStatus($studentId, this.value)'>
+            <select name='status' id='status_$studentId' class='form-control form-select' onchange='changeStatus($studentId, this.value)'>
                 <option value='pending'" . ($status == 'pending' ? " selected" : "") . ">Pending</option>
                 <option value='active'" . ($status == 'active' ? " selected" : "") . ">Active</option>
                 <option value='block'" . ($status == 'block' ? " selected" : "") . ">Block</option>
             </select>
+        </td>
+        <td>
+        <a href = '../delete_user.php?id=$studentId' class='btn btn-danger'>Delete</a>
+        <a href = './update_user.php?id=$studentId' class='btn btn-primary'>Edit</a>
         </td>
     </tr>";
 }

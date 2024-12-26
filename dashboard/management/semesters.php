@@ -32,7 +32,8 @@ while ($row = $sql->fetch_assoc()) {
                 <th>Created at</th>
                 <th>Fees</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th>button</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -67,7 +68,7 @@ while ($row = $sql->fetch_assoc()) {
                         <td>" . htmlspecialchars($student['created_at'], ENT_QUOTES, 'UTF-8') . "</td>
                         <td>" . htmlspecialchars($student['fees'], ENT_QUOTES, 'UTF-8') . "</td>
                         <td>
-                            <select name='status' id='status_$id' class='form-control' onchange='changeStatus($id, this.value)'>
+                            <select name='status' id='status_$id' class='form-control form-select' onchange='changeStatus($id, this.value)'>
                                 <option value='pending'" . ($status == 'pending' ? " selected" : "") . ">Pending</option>
                                 <option value='active'" . ($status == 'active' ? " selected" : "") . ">Active</option>
                                 <option value='block'" . ($status == 'block' ? " selected" : "") . ">Block</option>
@@ -76,6 +77,9 @@ while ($row = $sql->fetch_assoc()) {
                         <input type='hidden' name='semesterid' value='$id'>
                         <td><button type = 'submit' class = 'btn btn-primary'>Update</button></td>
                         </form>
+                        <td><a href='deleteSemester.php?id=$id' class='btn btn-danger'>Delete</a>
+                        <a href='editSemester.php?id=$id' class='btn btn-primary'>Edit</a>
+                        </td>
                         </tr>";
                 $sNo++;
             }

@@ -27,6 +27,7 @@
                     <a href="./courses.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'courses.php' || basename($_SERVER['PHP_SELF']) ==  'add_course.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Courses</a>
                     <a href="./finanace.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'finanace.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Finance</a>
                     <a href="./semesters.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'semesters.php' || basename($_SERVER['PHP_SELF']) ==  'add_semester.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Semesters</a>
+                    <a href="./all_messages.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'all_messages.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Messages</a>
                 </div>
             </nav>
         </div>
