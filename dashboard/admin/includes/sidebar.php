@@ -21,7 +21,7 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="./user_student.php" class="dropdown-item <?php echo basename($_SERVER['PHP_SELF']) == 'user_student.php'? 'active' : ''; ?>">Students</a>
                             <a href="./user_teacher.php" class="dropdown-item <?php echo basename($_SERVER['PHP_SELF']) == 'user_teacher.php'? 'active' : ''; ?>">Teachers</a>
-                            <a href="./user_management.php" class="dropdown-item <?php echo basename($_SERVER['PHP_SELF']) == 'user_teacher.php'? 'active' : ''; ?>">Management</a>
+                            <a href="./user_management.php" class="dropdown-item <?php echo basename($_SERVER['PHP_SELF']) == 'user_management.php'? 'active' : ''; ?>">Management</a>
                             <a href="./add_user.php" class="dropdown-item <?php echo basename($_SERVER['PHP_SELF']) == 'add_user.php'? 'active' : ''; ?>">Add User</a>
                         </div>
                     </div>
