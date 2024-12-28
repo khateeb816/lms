@@ -28,6 +28,7 @@
                     <a href="./courses.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'courses.php' || basename($_SERVER['PHP_SELF']) ==  'add_course.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Courses</a>
                     <a href="./finanace.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'finanace.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Finance</a>
                     <a href="./semesters.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'semesters.php' || basename($_SERVER['PHP_SELF']) ==  'add_semester.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Semesters</a>
+                    <a href="./announcements.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'announcements.php'? 'active' : ''; ?>"><i class="fa fa-th me-2"></i>Announcements</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Send Message</a>
                         <div class="dropdown-menu bg-transparent border-0">
