@@ -15,8 +15,7 @@
             if (isset($_POST['status']) && isset($_POST['deadline'])) {
                 $assignment_id = $_POST['assignment_id'];
                 $status = $_POST['status'];
-                $deadline = $_POST['deadline'];
-                $conn->query("UPDATE `assignments` SET `status` = '$status', `deadline` = '$deadline' WHERE `id` = '$assignment_id' AND `teacher_id` = '$user_id'");
+                $conn->query("UPDATE `assignments` SET `status` = '$status' WHERE `id` = '$assignment_id' AND `teacher_id` = '$user_id'");
                 echo "<script>window.location.href = '{$_SERVER['PHP_SELF']}'</script>";
                 exit();
             } elseif (isset($_POST['delete'])) {
@@ -55,19 +54,11 @@
                 echo "<strong>{$row['title']}</strong><br>";
                 echo "{$row['description']}<br>";
                 echo "<small>Course: {$courseTitle}</small><br>";
-                echo "<small>Deadline: {$deadline}</small>";
+                echo "<small>Deadline: {$deadline}</small><br>";
+                echo "<small>Status: {$status}</small>";
                 echo "</div>";
                 echo "<div>";
                 echo "<a href='../$filePath' download='../$fileName' class='btn btn-sm btn-primary'>Download</a>";
-                echo "<form method='POST' action='' style='display:inline; margin-left: 10px;'>";
-                echo "<input type='hidden' name='assignment_id' value='{$row['id']}'>";
-                echo "<select name='status' onchange='this.form.submit()' class='form-select form-select-sm' style='width: auto; display: inline-block;'>";
-                echo "<option value='active'" . ($status == 'active' ? ' selected' : '') . ">Active</option>";
-                echo "<option value='blocked'" . ($status == 'blocked' ? ' selected' : '') . ">Blocked</option>";
-                echo "<option value='completed'" . ($status == 'completed' ? ' selected' : '') . ">Completed</option>";
-                echo "<option value='pending'" . ($status == 'pending' ? ' selected' : '') . ">Pending</option>";
-                echo "</select>";
-                echo "</form>";
                 echo "<a href='update_assignment.php?id={$row['id']}' class='btn btn-sm btn-warning' style='margin-left: 10px;'>Update</a>";
                 echo "<form method='POST' action='' style='display:inline; margin-left: 10px;'>";
                 echo "<input type='hidden' name='assignment_id' value='{$row['id']}'>";

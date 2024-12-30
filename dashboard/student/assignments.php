@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['assignment_id'])) {
         // Fetch assignments grouped by course
         if (!empty($course_ids)) {
             $course_ids_str = implode(',', array_map('intval', $course_ids));
-            $sql = $conn->query("SELECT a.*, c.title as course_title FROM `assignments` a JOIN `courses` c ON a.course_id = c.id WHERE a.course_id IN ($course_ids_str) ORDER BY a.course_id, a.created_at DESC");
+            $sql = $conn->query("SELECT a.*, c.title as course_title FROM `assignments` a JOIN `courses` c ON a.course_id = c.id WHERE a.course_id IN ($course_ids_str) AND a.status = 'active' ORDER BY a.course_id, a.created_at DESC");
 
             $currentCourse = '';
             if ($sql->num_rows > 0) {
